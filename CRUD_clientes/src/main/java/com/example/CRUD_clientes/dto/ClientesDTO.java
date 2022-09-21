@@ -1,21 +1,13 @@
-package com.example.CRUD_clientes.entities;
+package com.example.CRUD_clientes.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.example.CRUD_clientes.entities.Clientes;
 
-@Entity
-@Table(name = "tb_clientes")
-public class Clientes implements Serializable {
+public class ClientesDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String cpf;
@@ -23,25 +15,17 @@ public class Clientes implements Serializable {
     private Instant birthDate;
     private Integer children;
 
-    public Clientes() {
+
+    public ClientesDTO() {
     }
 
-
-
-    public Clientes(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-
-
-    public Clientes(Long id, String name, String cpf, Double income, Instant birthDate, Integer children) {
-        this.id = id;
-        this.name = name;
-        this.cpf = cpf;
-        this.income = income;
-        this.birthDate = birthDate;
-        this.children = children;
+    public ClientesDTO(Clientes entity) {
+        this.id = entity.getId();
+        this.name = entity.getName();
+        this.cpf = entity.getCpf();
+        this.income = entity.getIncome();
+        this.birthDate = entity.getBirthDate();
+        this.children = entity.getChildren();
     }
 
     public Long getId() {
@@ -92,4 +76,7 @@ public class Clientes implements Serializable {
         this.children = children;
     }
 
+
+
+    
 }
